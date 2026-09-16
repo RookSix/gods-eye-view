@@ -14,6 +14,8 @@ import { defaultSourceRoot } from './common/source-root.js';
 import { radioBrowserProxy } from './radio.js';
 import { gbfsProxy } from './gbfs.js';
 import { coquitlamParkingProxy } from './coquitlamParking.js';
+import { coquitlamCivicProxy } from './coquitlamCivic.js';
+import { translinkProxy } from './translink.js';
 import { localReceiversProxy } from './local-receivers.js';
 import { transitProxy } from './transit.js';
 import { adsbLolProxy } from './aircraft/adsb-lol.js';
@@ -50,6 +52,8 @@ function localProviderPlugins({ realtime } = {}) {
     radioBrowserProxy(),
     gbfsProxy(),
     coquitlamParkingProxy(),
+    coquitlamCivicProxy(),
+    translinkProxy(),
     localReceiversProxy(),
     transitProxy(),
     adsbLolProxy(),

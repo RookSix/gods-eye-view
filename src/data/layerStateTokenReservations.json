@@ -28,5 +28,8 @@
   ["weather-radar", "v"],
   ["weather-satellite", "o"],
   ["wind", "k"],
-  ["coquitlam-parking", "3"]
+  ["coquitlam-parking", "3"],
+  ["coquitlam-crime", "4"],
+  ["coquitlam-trails", "5"],
+  ["translink-transit", "6"]
 ]
