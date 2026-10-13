@@ -363,6 +363,31 @@ const layers = [
     context: false,
     noQuery: 'use set_context_mode contacts',
   },
+  // Fork-local PNW layers (bobgillvan/gods-eye-view).
+  {
+    id: 'coquitlam-parking',
+    aliases: ['parking', 'parking lots', 'coquitlam parking', 'town centre park parking'],
+    context: false,
+    noQuery: 'local map overlay; not wired to analyst_query',
+  },
+  {
+    id: 'coquitlam-trails',
+    aliases: ['trails', 'hiking trails', 'paths'],
+    context: false,
+    noQuery: 'local map overlay; not wired to analyst_query',
+  },
+  {
+    id: 'coquitlam-crime',
+    aliases: ['crime', 'property crime', 'break-ins', 'theft'],
+    context: false,
+    noQuery: 'local map overlay; not wired to analyst_query',
+  },
+  {
+    id: 'translink-transit',
+    aliases: ['translink', 'skytrain', 'translink buses', 'bus routes'],
+    context: false,
+    noQuery: 'local map overlay; not wired to analyst_query',
+  },
 ];
 
 /**

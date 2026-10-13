@@ -16,6 +16,12 @@ import { gbfsProxy } from './gbfs.js';
 import { coquitlamParkingProxy } from './coquitlamParking.js';
 import { coquitlamCivicProxy } from './coquitlamCivic.js';
 import { translinkProxy } from './translink.js';
+
+/** Fork-local plugins register the same middleware on the built preview server. */
+const withPreview = (plugin) => ({
+  ...plugin,
+  configurePreviewServer: plugin.configureServer,
+});
 import { localReceiversProxy } from './local-receivers.js';
 import { transitProxy } from './transit.js';
 import { adsbLolProxy } from './aircraft/adsb-lol.js';
@@ -51,9 +57,9 @@ function localProviderPlugins({ realtime } = {}) {
     cctvProxy({ sourceRoot: defaultSourceRoot }),
     radioBrowserProxy(),
     gbfsProxy(),
-    coquitlamParkingProxy(),
-    coquitlamCivicProxy(),
-    translinkProxy(),
+    withPreview(coquitlamParkingProxy()),
+    withPreview(coquitlamCivicProxy()),
+    withPreview(translinkProxy()),
     localReceiversProxy(),
     transitProxy(),
     adsbLolProxy(),

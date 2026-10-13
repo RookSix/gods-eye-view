@@ -31,6 +31,11 @@ import { createInfrastructureLayers } from '../data/infrastructure.js';
 import { localGeoJsonServices } from './localGeojsonServices.js';
 import { createBhoteKoshiEventLayer } from '../data/bhoteKoshiEvent.js';
 import { createBhoteKoshiLocatorLayer } from '../data/bhoteKoshiLocator.js';
+// Fork-local PNW layers (bobgillvan/gods-eye-view).
+import { createCoquitlamParkingLayer } from '../data/coquitlamParking.js';
+import { createCoquitlamTrailsLayer } from '../data/coquitlamTrails.js';
+import { createCoquitlamCrimeLayer } from '../data/coquitlamCrime.js';
+import { createTranslinkTransitLayer } from '../data/translinkTransit.js';
 
 /**
  * Hardware-local layers are registered like any other but never enter share
@@ -170,6 +175,10 @@ export function createApplicationCatalog({
           source: 'NASA FIRMS · LIVE',
           feed: sources.firms,
         }),
+        createCoquitlamParkingLayer(),
+        createCoquitlamTrailsLayer(),
+        createCoquitlamCrimeLayer(),
+        createTranslinkTransitLayer(),
       ],
       metadata,
     );

@@ -75,9 +75,9 @@ function ensureCard() {
       navigator.clipboard
         ?.writeText(text)
         .then(() => {
-          event.target.textContent = 'copied';
+          event.target.textContent = 'Copied';
           setTimeout(() => {
-            if (event.target.isConnected) event.target.textContent = 'copy';
+            if (event.target.isConnected) event.target.textContent = 'Copy';
           }, 1200);
         })
         .catch(() => {
@@ -118,7 +118,7 @@ export function showVehicleCard({ rows, shareText, accent = '#00e0ff', at, onClo
         `<dt style="color:#7fa6bb">${escapeHtml(label)}</dt><dd style="margin:0">${escapeHtml(value)}</dd>`,
     ),
     `</dl>`,
-    `<button data-gev-action="copy" style="margin-top:10px;background:rgba(0,224,255,0.12);border:1px solid rgba(0,224,255,0.4);color:#dff3ff;cursor:pointer;font:inherit;padding:3px 10px;border-radius:3px">copy</button>`,
+    `<button data-gev-action="copy" style="margin-top:10px;background:rgba(0,224,255,0.12);border:1px solid rgba(0,224,255,0.4);color:#dff3ff;cursor:pointer;font:inherit;padding:3px 10px;border-radius:3px">Copy</button>`,
   ].join('');
 
   card.style.display = 'block';
