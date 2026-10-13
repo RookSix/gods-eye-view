@@ -217,6 +217,74 @@ test('a whole-city view loads cameras and reports the tiles it covers', async ()
     assert.ok(snapshot.coverage[key] >= city[key]);
 });
 
+test('Washington views use the US extract without probing Canadian sparse tiles', async () => {
+  const urls = [];
+  const source = createAlprTileSource({
+    tileFetchImpl: async (url) => {
+      urls.push(url);
+      if (url.endsWith('.json'))
+        return Response.json(metadata(url.includes('-ca-') ? 'ca' : 'us'));
+      assert.ok(url.includes('/cameras-us-hourly/'), url);
+      return new Response(fixture);
+    },
+  });
+  const seattle = { south: 47.72, north: 47.77, west: -122.66, east: -122.61 };
+  const snapshot = await source.fetch(seattle);
+  assert.ok(snapshot.records.length > 0);
+  assert.equal(snapshot.noCoverage, false);
+  assert.ok(urls.some((url) => url.includes('/cameras-us-hourly/')));
+  assert.ok(!urls.some((url) => url.includes('/cameras-ca-hourly/')));
+});
+
+test('Canadian views still use the Canadian extract', async () => {
+  const urls = [];
+  const source = createAlprTileSource({
+    tileFetchImpl: async (url) => {
+      urls.push(url);
+      if (url.endsWith('.json'))
+        return Response.json(metadata(url.includes('-ca-') ? 'ca' : 'us'));
+      return new Response(fixture);
+    },
+  });
+  const vancouver = { south: 49.25, north: 49.3, west: -123.14, east: -123.09 };
+  const snapshot = await source.fetch(vancouver);
+  assert.ok(snapshot.records.length > 0);
+  assert.ok(urls.some((url) => url.includes('/cameras-ca-hourly/')));
+});
+
+test('missing ALPR vector tiles are treated as sparse empty tiles', async () => {
+  const source = createAlprTileSource({
+    tileFetchImpl: async (url) => {
+      if (url.endsWith('.json'))
+        return Response.json(metadata(url.includes('-ca-') ? 'ca' : 'us'));
+      return new Response(null, { status: 404 });
+    },
+  });
+  const snapshot = await source.fetch({
+    south: 47.9,
+    north: 47.97,
+    west: -124.68,
+    east: -124.58,
+  });
+  assert.deepEqual(snapshot.records, []);
+  assert.equal(snapshot.noCoverage, false);
+  assert.equal(snapshot.saturated, false);
+});
+
+test('non-404 failures from the selected ALPR extract remain provider errors', async () => {
+  const source = createAlprTileSource({
+    tileFetchImpl: async (url) => {
+      if (url.endsWith('.json'))
+        return Response.json(metadata(url.includes('-ca-') ? 'ca' : 'us'));
+      return new Response(null, { status: 500 });
+    },
+  });
+  await assert.rejects(
+    source.fetch({ south: 47.72, north: 47.77, west: -122.66, east: -122.61 }),
+    /Vector tiles unavailable \(HTTP 500\)/,
+  );
+});
+
 test('coarser tiles never move a camera a finer tile already placed', () => {
   const cache = createAlprPrecisionCache(2);
   const fine = {

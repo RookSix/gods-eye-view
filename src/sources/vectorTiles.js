@@ -46,9 +46,12 @@ export function createVectorTileSource({
   maxCacheBytes = 24 * 1024 * 1024,
   maxResponseBytes = 4 * 1024 * 1024,
   metadataCooldownMs = 5000,
+  emptyTileStatuses = [],
+  emptyTileValue = () => [],
   now = Date.now,
 }) {
   const cache = new Map();
+  const emptyStatusSet = new Set(emptyTileStatuses);
   const active = new Set();
   const flights = new Map();
   let cacheBytes = 0;
@@ -284,9 +287,23 @@ export function createVectorTileSource({
             .replace('{x}', tile.x)
             .replace('{y}', tile.y);
           const fetchStart = performance.now();
-          const bytes = await request(url, ownedSignal, (res, requestSignal) =>
-            readResponseBytesCapped(res, maxResponseBytes, requestSignal),
-          );
+          let bytes;
+          try {
+            bytes = await request(url, ownedSignal, (res, requestSignal) =>
+              readResponseBytesCapped(res, maxResponseBytes, requestSignal),
+            );
+          } catch (error) {
+            if (emptyStatusSet.has(error.status)) {
+              phaseTiming('tile-fetch', fetchStart, {
+                source: allowedOrigin,
+                key,
+                bytes: 0,
+                empty: true,
+              });
+              return emptyTileValue(tile);
+            }
+            throw error;
+          }
           phaseTiming('tile-fetch', fetchStart, {
             source: allowedOrigin,
             key,
