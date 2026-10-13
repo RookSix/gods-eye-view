@@ -65,20 +65,58 @@ export function createAlprPrecisionCache(limit = PRECISION_CACHE_LIMIT) {
   };
 }
 
+function intersects(box, bounds) {
+  return !(
+    box.east < bounds.west ||
+    box.west > bounds.east ||
+    box.north < bounds.south ||
+    box.south > bounds.north
+  );
+}
+
+const ALPR_EXTRACTS = [
+  {
+    country: 'us',
+    // TileJSON bounds are intentionally broad enough to include neighboring
+    // border tiles. Keep provider selection geographic so a Washington viewport
+    // does not probe Canada's sparse/empty extract and abort valid US results.
+    regions: [
+      { south: 24, west: -125, north: 49.05, east: -66 },
+      { south: 51, west: -170, north: 72, east: -129 },
+      { south: 18, west: -161, north: 23, east: -154 },
+      { south: 17, west: -68, north: 19, east: -64 },
+    ],
+  },
+  {
+    country: 'ca',
+    regions: [
+      { south: 48.9, west: -141, north: 84, east: -95 },
+      { south: 41.6, west: -96, north: 84, east: -52 },
+    ],
+  },
+];
+
+function extractCoversBox(extract, box) {
+  return extract.regions.some((region) => intersects(box, region));
+}
+
 /** Construct the viewport-bounded OpenStreetMap hourly extract adapter. */
 export function createAlprTileSource({
   tileFetchImpl = (...args) => globalThis.fetch(...args),
 } = {}) {
-  const sources = ['us', 'ca'].map((country) =>
-    createVectorTileSource({
-      tileJsonUrl: `https://tiles.dontgetflocked.com/cameras-${country}-hourly.json`,
+  const sources = ALPR_EXTRACTS.map((extract) => ({
+    ...extract,
+    source: createVectorTileSource({
+      tileJsonUrl: `https://tiles.dontgetflocked.com/cameras-${extract.country}-hourly.json`,
       allowedOrigin: 'https://tiles.dontgetflocked.com',
       decode: decodeAlprTile,
       fetchImpl: tileFetchImpl,
       maxTiles: DETAIL_MAX_TILES,
       ttlMs: 60 * 60 * 1000,
+      emptyTileStatuses: [404],
+      emptyTileValue: () => [],
     }),
-  );
+  }));
   const precision = createAlprPrecisionCache();
   const precise = precision.apply;
   return {
@@ -124,16 +162,9 @@ export function createAlprTileSource({
       const records = new Map();
       let covered = false,
         partial = false;
-      for (const [index, source] of sources.entries()) {
-        if (
-          index === 1 &&
-          (box.north < 41 ||
-            box.south > 84 ||
-            box.east < -142 ||
-            box.west > -52)
-        )
-          continue;
-        const metadata = await source.getMetadata(signal);
+      for (const extract of sources) {
+        if (!extractCoversBox(extract, box)) continue;
+        const metadata = await extract.source.getMetadata(signal);
         const [west, south, east, north] = metadata.bounds || [];
         if (![west, south, east, north].every(Number.isFinite))
           throw new Error('Camera coverage unavailable');
@@ -145,7 +176,7 @@ export function createAlprTileSource({
         )
           continue;
         covered = true;
-        const result = await source.fetchBounds(box, { zoom, signal });
+        const result = await extract.source.fetchBounds(box, { zoom, signal });
         partial ||= result.partial;
         for (const record of result.tiles.flat())
           records.set(record.id, precise(record, zoom));
@@ -181,7 +212,7 @@ export function createAlprTileSource({
     },
     detailZoom: alprDetailZoom,
     destroy() {
-      for (const source of sources) source.clear();
+      for (const extract of sources) extract.source.clear();
       precision.clear();
     },
     label: 'OpenStreetMap · community mapped',
