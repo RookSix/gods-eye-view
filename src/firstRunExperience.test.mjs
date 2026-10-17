@@ -677,10 +677,12 @@ test('the voice TOOL SCHEMA matches the pinned contract — the mission mapping 
   // Fork re-pin (2026-10-12): the four PNW local layers (coquitlam-parking,
   // coquitlam-trails, coquitlam-crime, translink-transit) join the
   // manifest-generated layer enums and alias hints.
-  assert.equal(block.length, 30111, 'serialized tool schema length drifted');
+  // Fork re-pin (2026-10-16): natural-events, aircraft-emergencies, gps-jamming
+  // and day-night join the manifest-generated layer enums and alias hints.
+  assert.equal(block.length, 30397, 'serialized tool schema length drifted');
   assert.equal(
     crypto.createHash('sha256').update(block).digest('hex'),
-    '4887e9fe0f1241d46c3388ec96e04cc33600389dbbb0de4b0cee950c801dc4ab',
+    '3c8e7d5c2b24af9c759c7bc8b5ad9da8ed9317777a0fd792dfdded63116fb043',
     'the first-run missions must ride EXISTING tools: no schema edit, no cache bust',
   );
   const instructions = fs.readFileSync(new URL('../server/providers/openai/instructions.js', import.meta.url), 'utf8');

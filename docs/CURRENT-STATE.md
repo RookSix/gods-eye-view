@@ -333,6 +333,23 @@ geographic seams and releases on disable; forecast animation is not implied.
 Cyclone markers, labels, tracks and cones are hidden beyond the horizon on every map source.
 Consult the linked official advisory for safety decisions.
 
+Four default-off fork layers follow the shared feed pattern in
+`src/layers/feedOverlay/` (a lifecycle/selection owner over a per-layer renderer;
+labels and the selected card go through the world-overlay host, row details in
+the layer row). Natural events merges GDACS and NASA EONET open events from
+`/api/natural-events` (10 minutes, each source failing independently, last good
+records kept per source). GDACS earthquakes are dropped, since Earthquakes
+covers them; GDACS and EONET tropical cyclones are kept (the Cyclones layer is
+NHC/CPHC only, so these add worldwide basins) and drawn as storm-category
+points, not as advisories. Aircraft emergencies reads adsb.lol's exact-squawk
+7500/7600/7700 queries one after another through `/api/aircraft-emergencies`
+(30 seconds, shared Retry-After cooldown); a squawk is not a confirmed incident.
+GPS jamming turns gpsjam.org's newest non-suspect daily H3 res-4 cells
+(`/api/gps-jamming`, 6 hours, disk cached) into translucent ground polygons with
+`h3-js`. Day / night is computed in the browser from UTC (no route) and shades
+the night hemisphere and civil twilight without touching globe lighting;
+the layer manager's 60-second update moves it.
+
 Voice and HUD snapshots reuse the existing feedState classifier. Analyst follow-ups retain their original data provenance; current-view results append provenance without replacing legacy fields. HUD context and deterministic telemetry include non-nominal feed state.
 
 Analyst records come on demand from each layer's `getAnalystRecords`: flights, military, local ADS-B, vessels, satellites, launches, earthquakes, FIRMS (VIIRS and MODIS, with a `sensor` field), fire perimeters, cyclones, transit, bikeshare, ALPR cameras, mapped installations, datacenters and dams. `analyst_query` counts the whole loaded set (up to 250,000 records per layer; past that `coverage.records` reports `returned`, `total` and `truncated: true` and the result carries `complete: false`). Ranking keeps a top-k and scans in 20,000-row slices that yield to the page and stop when superseded. It refuses unknown fields, operators, units that do not convert (`altitudeM(ft)` converts), wrong-typed values, invalid centres, unknown scope kinds and sort fields with `code` and `allowed`, refuses a follow-up with no previous answer (`NO_RESULT_CONTEXT`) or naming other layers than that answer (`FOLLOW_UP_MISMATCH`), and tells `LAYER_OFF`, `NOT_READY` and `FEED_UNAVAILABLE` apart from a real zero; when only some layers can answer the result is `partial` with `unanswered` ids. The Contacts-window path applies the same filters, ranking and item shape to one immutable panel snapshot. Each aircraft layer retains at most 20,000 rows; reaching that bound sets `complete: false` and the spoken/card count becomes “At least”, never an exact claim. A superseded query never replaces follow-up memory, while sibling analyst calls from one assistant response do not cancel one another. Items carry `lat`/`lon`; the feed window (earthquakes and FIRMS: last 24 h), the precise scope and any caveat sit in `display`, which is on-screen detail rather than something the model recites. "In view" is still a radius around the view centre, not the visible footprint. Satellite distance is ground distance.

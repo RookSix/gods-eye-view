@@ -31,8 +31,13 @@ const PANEL_GROUPS = [
     ],
   },
   {
+    label: 'Aviation alerts',
+    ids: ['aircraft-emergencies', 'gps-jamming'],
+  },
+  {
     label: 'Cameras',
-    ids: ['cctv', 'recent-imagery', 'street-level'],
+    // Day/night shares the imagery group: both describe the lit surface.
+    ids: ['cctv', 'recent-imagery', 'day-night', 'street-level'],
   },
   {
     label: 'Infrastructure',
@@ -46,7 +51,13 @@ const PANEL_GROUPS = [
   },
   {
     label: 'Events',
-    ids: ['rocket-launches', 'earthquakes', 'local-firms', 'fire-perimeters'],
+    ids: [
+      'rocket-launches',
+      'earthquakes',
+      'natural-events',
+      'local-firms',
+      'fire-perimeters',
+    ],
   },
   {
     label: 'Weather',

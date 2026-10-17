@@ -388,6 +388,36 @@ const layers = [
     context: false,
     noQuery: 'local map overlay; not wired to analyst_query',
   },
+  // Fork-local World-Monitor-style layers.
+  {
+    id: 'natural-events',
+    aliases: ['natural events', 'disasters', 'natural hazards', 'gdacs'],
+    context: false,
+    noQuery: 'new hazard layer; not wired to analyst_query',
+  },
+  {
+    id: 'aircraft-emergencies',
+    aliases: ['emergency squawks', 'squawks', 'aircraft emergencies', 'mayday'],
+    context: false,
+    noQuery: 'new aviation layer; not wired to analyst_query',
+  },
+  {
+    id: 'gps-jamming',
+    aliases: [
+      'gps jamming',
+      'jamming',
+      'gps interference',
+      'gnss interference',
+    ],
+    context: false,
+    noQuery: 'daily map overlay; not wired to analyst_query',
+  },
+  {
+    id: 'day-night',
+    aliases: ['day night', 'terminator', 'night side', 'daylight'],
+    context: false,
+    noQuery: 'computed map overlay; no countable records',
+  },
 ];
 
 /**

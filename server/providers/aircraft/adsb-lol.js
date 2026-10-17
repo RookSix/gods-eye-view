@@ -1,3 +1,35 @@
+/** Cooldown after a 429 when upstream sends no usable Retry-After (ms). */
+const RATE_LIMIT_COOLDOWN_MS = 30000;
+/** Cooldown after a 5xx (ms). */
+const SERVER_ERROR_COOLDOWN_MS = 15000;
+/** Bounds for an upstream-supplied Retry-After (ms). */
+const COOLDOWN_MIN_MS = 5000;
+const COOLDOWN_MAX_MS = 120000;
+
+const clampCooldown = (ms) =>
+  Math.min(COOLDOWN_MAX_MS, Math.max(COOLDOWN_MIN_MS, ms));
+
+/**
+ * Cooldown (ms) an adsb.lol failure earns, honouring Retry-After when sane.
+ * Shared with the other adsb.lol routes so every one backs off the same way.
+ * @param {{status:number, headers?:{get?:Function}}} upstream Failed response.
+ * @param {number} now Epoch ms.
+ * @returns {number}
+ */
+export function adsbLolCooldownMs(upstream, now) {
+  const raw = upstream.headers?.get?.('retry-after');
+  if (raw) {
+    const seconds = Number(raw);
+    if (Number.isFinite(seconds) && seconds > 0)
+      return clampCooldown(seconds * 1000);
+    const at = Date.parse(raw);
+    if (Number.isFinite(at) && at > now) return clampCooldown(at - now);
+  }
+  return upstream.status === 429
+    ? RATE_LIMIT_COOLDOWN_MS
+    : SERVER_ERROR_COOLDOWN_MS;
+}
+
 /**
  * Vite plugin: adsb.lol military aircraft proxy with 12 s response cache.
  *
@@ -25,32 +57,6 @@ export function adsbLolProxy() {
   let _cooldownStatus = 0;
   /** Response cache TTL (ms). */
   const CACHE_MS = 12000;
-  /** Cooldown after a 429 when upstream sends no usable Retry-After (ms). */
-  const RATE_LIMIT_COOLDOWN_MS = 30000;
-  /** Cooldown after a 5xx (ms). */
-  const SERVER_ERROR_COOLDOWN_MS = 15000;
-  /** Bounds for an upstream-supplied Retry-After (ms). */
-  const COOLDOWN_MIN_MS = 5000;
-  const COOLDOWN_MAX_MS = 120000;
-
-  const clampCooldown = (ms) =>
-    Math.min(COOLDOWN_MAX_MS, Math.max(COOLDOWN_MIN_MS, ms));
-
-  /** Cooldown (ms) an upstream failure earns, honouring Retry-After when sane. */
-  function cooldownFor(upstream, now) {
-    const raw = upstream.headers?.get?.('retry-after');
-    if (raw) {
-      const seconds = Number(raw);
-      if (Number.isFinite(seconds) && seconds > 0)
-        return clampCooldown(seconds * 1000);
-      const at = Date.parse(raw);
-      if (Number.isFinite(at) && at > now) return clampCooldown(at - now);
-    }
-    return upstream.status === 429
-      ? RATE_LIMIT_COOLDOWN_MS
-      : SERVER_ERROR_COOLDOWN_MS;
-  }
-
   function serve(res, status, body, cacheStatus, extra = {}) {
     res.writeHead(status, {
       'Content-Type': 'application/json',
@@ -112,7 +118,7 @@ export function adsbLolProxy() {
         }
         if (upstream.status === 429 || upstream.status >= 500) {
           const failedAt = Date.now();
-          _cooldownUntil = failedAt + cooldownFor(upstream, failedAt);
+          _cooldownUntil = failedAt + adsbLolCooldownMs(upstream, failedAt);
           _cooldownStatus = upstream.status;
           console.warn(
             `[adsb.lol Proxy] upstream ${upstream.status}; cooling down ${Math.round((_cooldownUntil - Date.now()) / 1000)} s${_cache ? ', serving stale' : ''}`,

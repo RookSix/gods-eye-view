@@ -287,6 +287,22 @@ export const DATA_CREDITS = [
     html: 'Cyclone advisories: <a href="https://www.nhc.noaa.gov/" target="_blank" rel="noopener">NOAA/NWS NHC / CPHC</a> · Atlantic and eastern/central North Pacific. Forecast center uncertainty, not storm size.',
   },
   {
+    key: 'gdacs',
+    html: 'Natural-event alerts: <a href="https://www.gdacs.org/" target="_blank" rel="noopener">GDACS</a> (European Commission JRC / UN OCHA). Alert levels and positions are approximate.',
+  },
+  {
+    key: 'nasa-eonet',
+    html: 'Natural events: <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noopener">NASA EONET</a> open events (courtesy; not an endorsement).',
+  },
+  {
+    key: 'adsblol-squawk',
+    html: 'Emergency squawks (7500/7600/7700): <a href="https://www.adsb.lol/" target="_blank" rel="noopener">adsb.lol</a> community receivers (<a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener">ODbL</a>). A squawk is not a confirmed incident.',
+  },
+  {
+    key: 'gpsjam',
+    html: 'GPS interference: <a href="https://gpsjam.org/" target="_blank" rel="noopener">gpsjam.org</a> (data from ADS-B Exchange / adsb.lol etc.). Possible interference, not a confirmed jamming source.',
+  },
+  {
     key: 'weather-lightning',
     html: 'Lightning density: NOAA/NWS nowCOAST · derived from Vaisala NLDN/GLD360. <a href="https://ocean.weather.gov/lightning/lightning_pdd.php" target="_blank" rel="noopener">Public derived density product</a>, not raw detections.',
   },

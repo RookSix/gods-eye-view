@@ -27,6 +27,10 @@ import { createApplicationEarthquakes } from './layers/earthquakes.js';
 import { createApplicationFirePerimeters } from './layers/perimeters.js';
 import { createApplicationCables } from './layers/submarineCables.js';
 import { createApplicationStreetLevel } from './layers/streetLevel.js';
+import { createApplicationNaturalEvents } from './layers/naturalEvents.js';
+import { createApplicationAircraftEmergencies } from './layers/aircraftEmergencies.js';
+import { createApplicationGpsJamming } from './layers/gpsJamming.js';
+import { createApplicationDayNight } from './layers/dayNight.js';
 import { createInfrastructureLayers } from '../data/infrastructure.js';
 import { localGeoJsonServices } from './localGeojsonServices.js';
 import { createBhoteKoshiEventLayer } from '../data/bhoteKoshiEvent.js';
@@ -165,6 +169,13 @@ export function createApplicationCatalog({
           clock: weatherClock,
         }),
         createCyclonesLayer({ feed: sources.cyclones }),
+        // Fork-local World-Monitor-style layers.
+        createApplicationNaturalEvents({ feed: sources['natural-events'] }),
+        createApplicationAircraftEmergencies({
+          feed: sources['aircraft-emergencies'],
+        }),
+        createApplicationGpsJamming({ feed: sources['gps-jamming'] }),
+        createApplicationDayNight(),
         ...createInfrastructureLayers(localGeoJsonServices),
         createApplicationCables({ source: sources.cables }),
         createApplicationFirms({

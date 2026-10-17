@@ -35,6 +35,9 @@ import { weatherProxy } from './weather.js';
 import { firePerimetersProxy } from './firePerimeters.js';
 import { cycloneProxy } from './cyclones.js';
 import { windProxy } from './wind.js';
+import { naturalEventsProxy } from './naturalEvents.js';
+import { aircraftEmergenciesProxy } from './aircraftEmergencies.js';
+import { gpsJammingProxy } from './gpsJamming.js';
 
 /**
  * Construct the local provider plugins in their established order.
@@ -72,6 +75,10 @@ function localProviderPlugins({ realtime } = {}) {
     cycloneProxy(),
     mapillaryProxy(),
     firePerimetersProxy(),
+    // Fork-local World-Monitor-style layers; each serves dev and preview.
+    naturalEventsProxy(),
+    aircraftEmergenciesProxy(),
+    gpsJammingProxy(),
     keySetupEndpoint(),
   ];
 }

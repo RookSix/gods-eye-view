@@ -31,5 +31,9 @@
   ["coquitlam-parking", "3"],
   ["coquitlam-crime", "4"],
   ["coquitlam-trails", "5"],
-  ["translink-transit", "6"]
+  ["translink-transit", "6"],
+  ["natural-events", "7"],
+  ["aircraft-emergencies", "8"],
+  ["gps-jamming", "9"],
+  ["day-night", "00"]
 ]

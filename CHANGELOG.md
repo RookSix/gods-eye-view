@@ -1,5 +1,13 @@
 # Changelog
 
+- Add four default-off World-Monitor-style layers (menu groups in brackets):
+  Natural events from GDACS and NASA EONET (Events), Aircraft emergencies for
+  squawk 7500/7600/7700 and GPS jamming from gpsjam.org's daily H3 cells
+  (Aviation alerts), and a computed Day / night terminator (Cameras, beside
+  Recent Imagery). Each server route (`/api/natural-events`,
+  `/api/aircraft-emergencies`, `/api/gps-jamming`) is keyless, cached, bounded
+  and serves stale data on upstream failure. Adds the `h3-js` dependency.
+
 - Treat explicitly current, complete empty vessel coverage as a successful update,
   clearing obsolete contacts while retaining stale or incomplete snapshots.
 

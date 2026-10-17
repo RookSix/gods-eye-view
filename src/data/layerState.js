@@ -568,6 +568,11 @@ export const LAYER_STATE_TOKEN_RESERVATIONS =
  */
 export const LAYER_STATE_REGISTRY = Object.freeze([
   Object.freeze({
+    id: 'aircraft-emergencies',
+    token: '8',
+    disposition: 'enabled-only',
+  }),
+  Object.freeze({
     id: 'ais-live-vessels',
     token: 'a',
     disposition: 'enabled-only',
@@ -597,6 +602,7 @@ export const LAYER_STATE_REGISTRY = Object.freeze([
   Object.freeze({ id: 'coquitlam-crime', token: '4', disposition: 'enabled-only' }),
   Object.freeze({ id: 'coquitlam-parking', token: '3', disposition: 'enabled-only' }),
   Object.freeze({ id: 'coquitlam-trails', token: '5', disposition: 'enabled-only' }),
+  Object.freeze({ id: 'day-night', token: '00', disposition: 'enabled-only' }),
   Object.freeze({ id: 'directions', token: 'n', disposition: 'enabled-only' }),
   Object.freeze({ id: 'earthquakes', token: 'e', disposition: 'enabled-only' }),
   Object.freeze({
@@ -610,6 +616,7 @@ export const LAYER_STATE_REGISTRY = Object.freeze([
     disposition: 'enabled+options',
     optionOwner: 'flights',
   }),
+  Object.freeze({ id: 'gps-jamming', token: '9', disposition: 'enabled-only' }),
   Object.freeze({ id: 'local-dams', token: 'q', disposition: 'enabled-only' }),
   Object.freeze({
     id: 'local-datacenters',
@@ -631,6 +638,11 @@ export const LAYER_STATE_REGISTRY = Object.freeze([
   Object.freeze({
     id: 'military-installations',
     token: 'i',
+    disposition: 'enabled-only',
+  }),
+  Object.freeze({
+    id: 'natural-events',
+    token: '7',
     disposition: 'enabled-only',
   }),
   Object.freeze({

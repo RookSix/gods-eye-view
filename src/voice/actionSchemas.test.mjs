@@ -38,7 +38,9 @@ test('the complete Realtime tool payload pins the manifest-generated layer relea
     // requested radius and center authority in descriptions only.
     // Street Level adds its toggle enum values and generated alias hint.
     // Fork re-pin (2026-10-12): four PNW local layers join the generated enums.
-    'f587b76525cfc87f0fcdd1796e281b46967ab53cf88d711746fc78120acf3d87',
+    // Fork re-pin (2026-10-16): natural-events, aircraft-emergencies,
+    // gps-jamming and day-night join them.
+    'f8aa70cc75ab39acd42d7b3a07baaaee74a714c3fb2e6f75753bf83c5f9ef573',
   );
 });
 
