@@ -599,6 +599,11 @@ export const LAYER_STATE_REGISTRY = Object.freeze([
     disposition: 'enabled+options',
     optionOwner: 'cctv',
   }),
+  Object.freeze({
+    id: 'climate-anomalies',
+    token: '02',
+    disposition: 'enabled-only',
+  }),
   Object.freeze({ id: 'coquitlam-crime', token: '4', disposition: 'enabled-only' }),
   Object.freeze({ id: 'coquitlam-parking', token: '3', disposition: 'enabled-only' }),
   Object.freeze({ id: 'coquitlam-trails', token: '5', disposition: 'enabled-only' }),
@@ -643,6 +648,16 @@ export const LAYER_STATE_REGISTRY = Object.freeze([
   Object.freeze({
     id: 'natural-events',
     token: '7',
+    disposition: 'enabled-only',
+  }),
+  Object.freeze({
+    id: 'nav-warnings',
+    token: '01',
+    disposition: 'enabled-only',
+  }),
+  Object.freeze({
+    id: 'radiation',
+    token: '03',
     disposition: 'enabled-only',
   }),
   Object.freeze({

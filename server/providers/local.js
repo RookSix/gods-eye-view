@@ -38,6 +38,9 @@ import { windProxy } from './wind.js';
 import { naturalEventsProxy } from './naturalEvents.js';
 import { aircraftEmergenciesProxy } from './aircraftEmergencies.js';
 import { gpsJammingProxy } from './gpsJamming.js';
+import { navWarningsProxy } from './navWarnings.js';
+import { climateAnomaliesProxy } from './climateAnomalies.js';
+import { radiationProxy } from './radiation.js';
 
 /**
  * Construct the local provider plugins in their established order.
@@ -79,6 +82,9 @@ function localProviderPlugins({ realtime } = {}) {
     naturalEventsProxy(),
     aircraftEmergenciesProxy(),
     gpsJammingProxy(),
+    navWarningsProxy(),
+    climateAnomaliesProxy(),
+    radiationProxy(),
     keySetupEndpoint(),
   ];
 }

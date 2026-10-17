@@ -59,6 +59,7 @@ export function createLifecycle({ state, parts, source, mapStackEventTarget }) {
 
     enable(viewer) {
       state._enabled = true;
+      parts.health.attach();
       parts.rendering.updateVisibility();
       state._overlayPublisher.show();
       // A hide() cleared the host source, so an identical cohort must still
@@ -73,6 +74,7 @@ export function createLifecycle({ state, parts, source, mapStackEventTarget }) {
 
     disable() {
       state._enabled = false;
+      parts.health.detach();
       state._overlayPublisher.hide();
       parts.rendering.resetPublishSignature();
       if (state._loading && state._abort) {
@@ -92,6 +94,9 @@ export function createLifecycle({ state, parts, source, mapStackEventTarget }) {
 
     destroy(viewer) {
       if (state._abort) state._abort.abort();
+      parts.health.detach();
+      state._healthFeatures = [];
+      state._healthFeatureById = new Map();
       parts.rendering.releaseDataSources(viewer || state._viewer);
       state._cachedCableJson = null;
       state._cachedLandingJson = null;
@@ -150,6 +155,7 @@ export function createLifecycle({ state, parts, source, mapStackEventTarget }) {
         loadingLabel: state._loadingLabel,
         error: state._error,
         referenceLabelCount: state._referenceLabelCount,
+        healthFlagged: parts.health.flaggedCount(),
       };
     },
   };

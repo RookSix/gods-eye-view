@@ -1,0 +1,929 @@
+{
+ "_source": "Site list: US EPA RadNet CSV downloads page https://www.epa.gov/radnet/radnet-csv-file-downloads (US public domain). Coordinates: city-level geocode via OpenStreetMap Nominatim (ODbL), approximate monitor location. Generated 2026-10-16.",
+ "sites": [
+  {
+   "state": "AK",
+   "city": "ANCHORAGE",
+   "path": "ak/anchorage",
+   "lat": 61.2163,
+   "lon": -149.8949
+  },
+  {
+   "state": "AK",
+   "city": "FAIRBANKS",
+   "path": "AK/FAIRBANKS",
+   "lat": 64.8378,
+   "lon": -147.7167
+  },
+  {
+   "state": "AK",
+   "city": "JUNEAU",
+   "path": "ak/juneau",
+   "lat": 58.302,
+   "lon": -134.4197
+  },
+  {
+   "state": "AL",
+   "city": "BIRMINGHAM",
+   "path": "AL/BIRMINGHAM",
+   "lat": 33.5207,
+   "lon": -86.8024
+  },
+  {
+   "state": "AL",
+   "city": "MOBILE",
+   "path": "AL/MOBILE",
+   "lat": 30.6913,
+   "lon": -88.0438
+  },
+  {
+   "state": "AL",
+   "city": "MONTGOMERY",
+   "path": "AL/MONTGOMERY",
+   "lat": 32.3777,
+   "lon": -86.3091
+  },
+  {
+   "state": "AR",
+   "city": "FT SMITH",
+   "path": "AR/FT SMITH",
+   "lat": 35.388,
+   "lon": -94.4265
+  },
+  {
+   "state": "AR",
+   "city": "LITTLE ROCK",
+   "path": "AR/LITTLE ROCK",
+   "lat": 34.7465,
+   "lon": -92.2896
+  },
+  {
+   "state": "AZ",
+   "city": "PHOENIX",
+   "path": "AZ/PHOENIX",
+   "lat": 33.4484,
+   "lon": -112.0741
+  },
+  {
+   "state": "AZ",
+   "city": "TUCSON",
+   "path": "az/tucson",
+   "lat": 32.2229,
+   "lon": -110.9748
+  },
+  {
+   "state": "AZ",
+   "city": "YUMA",
+   "path": "AZ/YUMA",
+   "lat": 32.721,
+   "lon": -114.6203
+  },
+  {
+   "state": "CA",
+   "city": "ANAHEIM",
+   "path": "CA/ANAHEIM",
+   "lat": 33.8348,
+   "lon": -117.9117
+  },
+  {
+   "state": "CA",
+   "city": "BAKERSFIELD",
+   "path": "CA/BAKERSFIELD",
+   "lat": 35.3739,
+   "lon": -119.0195
+  },
+  {
+   "state": "CA",
+   "city": "EUREKA",
+   "path": "CA/EUREKA",
+   "lat": 40.8019,
+   "lon": -124.1708
+  },
+  {
+   "state": "CA",
+   "city": "FRESNO",
+   "path": "CA/FRESNO",
+   "lat": 36.7394,
+   "lon": -119.7848
+  },
+  {
+   "state": "CA",
+   "city": "LOS ANGELES",
+   "path": "CA/LOS ANGELES",
+   "lat": 34.0537,
+   "lon": -118.2428
+  },
+  {
+   "state": "CA",
+   "city": "RIVERSIDE",
+   "path": "CA/RIVERSIDE",
+   "lat": 33.9825,
+   "lon": -117.3742
+  },
+  {
+   "state": "CA",
+   "city": "SACRAMENTO",
+   "path": "ca/sacramento",
+   "lat": 38.5811,
+   "lon": -121.4939
+  },
+  {
+   "state": "CA",
+   "city": "SAN BERNARDINO COUNTY",
+   "path": "CA/SAN BERNARDINO COUNTY",
+   "lat": 34.8253,
+   "lon": -116.0833
+  },
+  {
+   "state": "CA",
+   "city": "SAN DIEGO",
+   "path": "CA/SAN DIEGO",
+   "lat": 32.7157,
+   "lon": -117.1638
+  },
+  {
+   "state": "CA",
+   "city": "SAN FRANCISCO",
+   "path": "CA/SAN FRANCISCO",
+   "lat": 37.7879,
+   "lon": -122.4075
+  },
+  {
+   "state": "CA",
+   "city": "SAN JOSE",
+   "path": "CA/SAN JOSE",
+   "lat": 37.3362,
+   "lon": -121.8906
+  },
+  {
+   "state": "CO",
+   "city": "COLORADO SPRINGS",
+   "path": "CO/COLORADO SPRINGS",
+   "lat": 38.834,
+   "lon": -104.8253
+  },
+  {
+   "state": "CO",
+   "city": "DENVER",
+   "path": "CO/DENVER",
+   "lat": 39.7392,
+   "lon": -104.9849
+  },
+  {
+   "state": "CO",
+   "city": "GRAND JUNCTION",
+   "path": "CO/GRAND JUNCTION",
+   "lat": 39.0673,
+   "lon": -108.5645
+  },
+  {
+   "state": "CT",
+   "city": "HARTFORD",
+   "path": "CT/HARTFORD",
+   "lat": 41.7662,
+   "lon": -72.6733
+  },
+  {
+   "state": "DC",
+   "city": "WASHINGTON",
+   "path": "DC/WASHINGTON",
+   "lat": 38.8951,
+   "lon": -77.0364
+  },
+  {
+   "state": "DE",
+   "city": "DOVER",
+   "path": "DE/DOVER",
+   "lat": 39.1582,
+   "lon": -75.5244
+  },
+  {
+   "state": "FL",
+   "city": "JACKSONVILLE",
+   "path": "FL/JACKSONVILLE",
+   "lat": 30.3262,
+   "lon": -81.6579
+  },
+  {
+   "state": "FL",
+   "city": "MIAMI",
+   "path": "fl/miami",
+   "lat": 25.7742,
+   "lon": -80.1936
+  },
+  {
+   "state": "FL",
+   "city": "ORLANDO",
+   "path": "FL/ORLANDO",
+   "lat": 28.5421,
+   "lon": -81.379
+  },
+  {
+   "state": "FL",
+   "city": "TALLAHASSEE",
+   "path": "FL/TALLAHASSEE",
+   "lat": 30.4381,
+   "lon": -84.2809
+  },
+  {
+   "state": "FL",
+   "city": "TAMPA",
+   "path": "FL/TAMPA",
+   "lat": 27.945,
+   "lon": -82.4583
+  },
+  {
+   "state": "GA",
+   "city": "ATLANTA",
+   "path": "GA/ATLANTA",
+   "lat": 33.7545,
+   "lon": -84.3898
+  },
+  {
+   "state": "GA",
+   "city": "AUGUSTA",
+   "path": "ga/augusta",
+   "lat": 33.471,
+   "lon": -81.9748
+  },
+  {
+   "state": "HI",
+   "city": "HONOLULU",
+   "path": "HI/HONOLULU",
+   "lat": 21.3045,
+   "lon": -157.8557
+  },
+  {
+   "state": "IA",
+   "city": "DES MOINES",
+   "path": "ia/des moines",
+   "lat": 41.5869,
+   "lon": -93.6249
+  },
+  {
+   "state": "IA",
+   "city": "FORT MADISON",
+   "path": "IA/FORT MADISON",
+   "lat": 40.6311,
+   "lon": -91.3084
+  },
+  {
+   "state": "IA",
+   "city": "MASON CITY",
+   "path": "IA/MASON CITY",
+   "lat": 43.1525,
+   "lon": -93.2018
+  },
+  {
+   "state": "ID",
+   "city": "BOISE",
+   "path": "ID/BOISE",
+   "lat": 43.6166,
+   "lon": -116.2009
+  },
+  {
+   "state": "ID",
+   "city": "IDAHO FALLS",
+   "path": "ID/IDAHO FALLS",
+   "lat": 43.4888,
+   "lon": -112.0363
+  },
+  {
+   "state": "IL",
+   "city": "AURORA",
+   "path": "il/aurora",
+   "lat": 41.7572,
+   "lon": -88.3148
+  },
+  {
+   "state": "IL",
+   "city": "CHAMPAIGN",
+   "path": "il/champaign",
+   "lat": 40.1165,
+   "lon": -88.2431
+  },
+  {
+   "state": "IL",
+   "city": "CHICAGO",
+   "path": "il/chicago",
+   "lat": 41.8756,
+   "lon": -87.6244
+  },
+  {
+   "state": "IN",
+   "city": "FORT WAYNE",
+   "path": "in/fort wayne",
+   "lat": 41.08,
+   "lon": -85.1386
+  },
+  {
+   "state": "IN",
+   "city": "INDIANAPOLIS",
+   "path": "IN/INDIANAPOLIS",
+   "lat": 39.7683,
+   "lon": -86.1584
+  },
+  {
+   "state": "KS",
+   "city": "DODGE CITY",
+   "path": "ks/dodge city",
+   "lat": 37.7528,
+   "lon": -100.0171
+  },
+  {
+   "state": "KS",
+   "city": "KANSAS CITY",
+   "path": "KS/KANSAS CITY",
+   "lat": 39.1135,
+   "lon": -94.6265
+  },
+  {
+   "state": "KS",
+   "city": "WICHITA",
+   "path": "KS/WICHITA",
+   "lat": 37.6922,
+   "lon": -97.3375
+  },
+  {
+   "state": "KY",
+   "city": "LEXINGTON",
+   "path": "ky/lexington",
+   "lat": 38.0464,
+   "lon": -84.497
+  },
+  {
+   "state": "KY",
+   "city": "PADUCAH",
+   "path": "ky/paducah",
+   "lat": 37.0834,
+   "lon": -88.6
+  },
+  {
+   "state": "LA",
+   "city": "BATON ROUGE",
+   "path": "LA/BATON ROUGE",
+   "lat": 30.4494,
+   "lon": -91.187
+  },
+  {
+   "state": "LA",
+   "city": "SHREVEPORT",
+   "path": "LA/SHREVEPORT",
+   "lat": 32.5135,
+   "lon": -93.7478
+  },
+  {
+   "state": "MA",
+   "city": "BOSTON",
+   "path": "MA/BOSTON",
+   "lat": 42.3588,
+   "lon": -71.0578
+  },
+  {
+   "state": "MA",
+   "city": "WORCESTER",
+   "path": "MA/WORCESTER",
+   "lat": 42.2626,
+   "lon": -71.8019
+  },
+  {
+   "state": "MD",
+   "city": "BALTIMORE",
+   "path": "MD/BALTIMORE",
+   "lat": 39.2909,
+   "lon": -76.6108
+  },
+  {
+   "state": "ME",
+   "city": "ORONO",
+   "path": "ME/ORONO",
+   "lat": 44.8836,
+   "lon": -68.6728
+  },
+  {
+   "state": "ME",
+   "city": "PORTLAND",
+   "path": "me/portland",
+   "lat": 43.6574,
+   "lon": -70.2587
+  },
+  {
+   "state": "MI",
+   "city": "BAY CITY",
+   "path": "mi/bay city",
+   "lat": 43.5962,
+   "lon": -83.8882
+  },
+  {
+   "state": "MI",
+   "city": "DETROIT",
+   "path": "MI/DETROIT",
+   "lat": 42.3316,
+   "lon": -83.0466
+  },
+  {
+   "state": "MI",
+   "city": "GRAND RAPIDS",
+   "path": "MI/GRAND RAPIDS",
+   "lat": 42.9632,
+   "lon": -85.6679
+  },
+  {
+   "state": "MN",
+   "city": "DULUTH",
+   "path": "mn/duluth",
+   "lat": 46.7838,
+   "lon": -92.1053
+  },
+  {
+   "state": "MN",
+   "city": "ST. PAUL",
+   "path": "MN/ST. PAUL",
+   "lat": 44.9497,
+   "lon": -93.0931
+  },
+  {
+   "state": "MO",
+   "city": "JEFFERSON CITY",
+   "path": "MO/JEFFERSON CITY",
+   "lat": 38.5774,
+   "lon": -92.1724
+  },
+  {
+   "state": "MO",
+   "city": "SPRINGFIELD",
+   "path": "MO/SPRINGFIELD",
+   "lat": 37.2082,
+   "lon": -93.2923
+  },
+  {
+   "state": "MO",
+   "city": "ST. LOUIS",
+   "path": "mo/st. louis",
+   "lat": 38.6254,
+   "lon": -90.19
+  },
+  {
+   "state": "MS",
+   "city": "JACKSON",
+   "path": "ms/jackson",
+   "lat": 32.2999,
+   "lon": -90.183
+  },
+  {
+   "state": "MT",
+   "city": "BILLINGS",
+   "path": "mt/billings",
+   "lat": 45.7875,
+   "lon": -108.4961
+  },
+  {
+   "state": "MT",
+   "city": "KALISPELL",
+   "path": "MT/KALISPELL",
+   "lat": 48.2022,
+   "lon": -114.3153
+  },
+  {
+   "state": "NC",
+   "city": "CHARLOTTE",
+   "path": "nc/charlotte",
+   "lat": 35.2272,
+   "lon": -80.8431
+  },
+  {
+   "state": "NC",
+   "city": "GREENSBORO",
+   "path": "nc/greensboro",
+   "lat": 36.0726,
+   "lon": -79.792
+  },
+  {
+   "state": "NC",
+   "city": "RALEIGH",
+   "path": "nc/raleigh",
+   "lat": 35.7804,
+   "lon": -78.6391
+  },
+  {
+   "state": "NC",
+   "city": "WILMINGTON",
+   "path": "NC/WILMINGTON",
+   "lat": 34.2353,
+   "lon": -77.9487
+  },
+  {
+   "state": "ND",
+   "city": "BISMARCK",
+   "path": "nd/bismarck",
+   "lat": 46.8083,
+   "lon": -100.7837
+  },
+  {
+   "state": "NE",
+   "city": "KEARNEY",
+   "path": "ne/kearney",
+   "lat": 40.4906,
+   "lon": -98.9472
+  },
+  {
+   "state": "NE",
+   "city": "LINCOLN",
+   "path": "ne/lincoln",
+   "lat": 40.8089,
+   "lon": -96.7078
+  },
+  {
+   "state": "NE",
+   "city": "OMAHA",
+   "path": "NE/OMAHA",
+   "lat": 41.2587,
+   "lon": -95.9384
+  },
+  {
+   "state": "NH",
+   "city": "CONCORD",
+   "path": "NH/CONCORD",
+   "lat": 43.2072,
+   "lon": -71.5375
+  },
+  {
+   "state": "NH",
+   "city": "PORTSMOUTH",
+   "path": "NH/PORTSMOUTH",
+   "lat": 43.0751,
+   "lon": -70.7602
+  },
+  {
+   "state": "NJ",
+   "city": "EDISON",
+   "path": "nj/edison",
+   "lat": 40.5005,
+   "lon": -74.3984
+  },
+  {
+   "state": "NM",
+   "city": "ALBUQUERQUE",
+   "path": "nm/albuquerque",
+   "lat": 35.0841,
+   "lon": -106.651
+  },
+  {
+   "state": "NM",
+   "city": "CARLSBAD",
+   "path": "NM/CARLSBAD",
+   "lat": 32.4257,
+   "lon": -104.2376
+  },
+  {
+   "state": "NM",
+   "city": "NAVAJO LAKE",
+   "path": "NM/NAVAJO LAKE",
+   "lat": 36.9214,
+   "lon": -107.4508
+  },
+  {
+   "state": "NV",
+   "city": "LAS VEGAS",
+   "path": "nv/las vegas",
+   "lat": 36.1674,
+   "lon": -115.1484
+  },
+  {
+   "state": "NV",
+   "city": "RENO",
+   "path": "nv/reno",
+   "lat": 39.5262,
+   "lon": -119.8127
+  },
+  {
+   "state": "NY",
+   "city": "ALBANY",
+   "path": "ny/albany",
+   "lat": 42.6512,
+   "lon": -73.755
+  },
+  {
+   "state": "NY",
+   "city": "BUFFALO",
+   "path": "ny/buffalo",
+   "lat": 42.8864,
+   "lon": -78.8781
+  },
+  {
+   "state": "NY",
+   "city": "NYC (EML)",
+   "path": "NY/NYC (EML)",
+   "lat": 40.7127,
+   "lon": -74.006
+  },
+  {
+   "state": "NY",
+   "city": "ROCHESTER",
+   "path": "ny/rochester",
+   "lat": 43.1573,
+   "lon": -77.6152
+  },
+  {
+   "state": "NY",
+   "city": "SYRACUSE",
+   "path": "NY/SYRACUSE",
+   "lat": 43.0481,
+   "lon": -76.1474
+  },
+  {
+   "state": "NY",
+   "city": "YAPHANK",
+   "path": "NY/YAPHANK",
+   "lat": 40.8322,
+   "lon": -72.93
+  },
+  {
+   "state": "OH",
+   "city": "CINCINNATI",
+   "path": "oh/cincinnati",
+   "lat": 39.1013,
+   "lon": -84.5127
+  },
+  {
+   "state": "OH",
+   "city": "CLEVELAND",
+   "path": "oh/cleveland",
+   "lat": 41.4997,
+   "lon": -81.6937
+  },
+  {
+   "state": "OH",
+   "city": "COLUMBUS",
+   "path": "OH/COLUMBUS",
+   "lat": 39.9623,
+   "lon": -83.0007
+  },
+  {
+   "state": "OH",
+   "city": "TOLEDO",
+   "path": "oh/toledo",
+   "lat": 41.6529,
+   "lon": -83.5378
+  },
+  {
+   "state": "OK",
+   "city": "OKLAHOMA CITY",
+   "path": "ok/oklahoma city",
+   "lat": 35.473,
+   "lon": -97.5171
+  },
+  {
+   "state": "OK",
+   "city": "TULSA",
+   "path": "OK/TULSA",
+   "lat": 36.1563,
+   "lon": -95.9928
+  },
+  {
+   "state": "OR",
+   "city": "CORVALLIS",
+   "path": "OR/CORVALLIS",
+   "lat": 44.5646,
+   "lon": -123.262
+  },
+  {
+   "state": "OR",
+   "city": "PORTLAND",
+   "path": "or/portland",
+   "lat": 45.5202,
+   "lon": -122.6742
+  },
+  {
+   "state": "PA",
+   "city": "BLOOMSBURG",
+   "path": "PA/BLOOMSBURG",
+   "lat": 41.0045,
+   "lon": -76.4537
+  },
+  {
+   "state": "PA",
+   "city": "PHILADELPHIA",
+   "path": "pa/philadelphia",
+   "lat": 39.9527,
+   "lon": -75.1635
+  },
+  {
+   "state": "PA",
+   "city": "PITTSBURGH",
+   "path": "pa/pittsburgh",
+   "lat": 40.4407,
+   "lon": -80.0026
+  },
+  {
+   "state": "PR",
+   "city": "SAN JUAN",
+   "path": "PR/SAN JUAN",
+   "lat": 18.3842,
+   "lon": -66.0534
+  },
+  {
+   "state": "RI",
+   "city": "PROVIDENCE",
+   "path": "ri/providence",
+   "lat": 41.824,
+   "lon": -71.4128
+  },
+  {
+   "state": "SC",
+   "city": "COLUMBIA",
+   "path": "sc/columbia",
+   "lat": 34.0008,
+   "lon": -81.0352
+  },
+  {
+   "state": "SD",
+   "city": "PIERRE",
+   "path": "sd/pierre",
+   "lat": 44.3684,
+   "lon": -100.3511
+  },
+  {
+   "state": "SD",
+   "city": "RAPID CITY",
+   "path": "sd/rapid city",
+   "lat": 44.0806,
+   "lon": -103.228
+  },
+  {
+   "state": "TN",
+   "city": "KNOXVILLE",
+   "path": "tn/knoxville",
+   "lat": 35.9604,
+   "lon": -83.921
+  },
+  {
+   "state": "TN",
+   "city": "MEMPHIS",
+   "path": "TN/MEMPHIS",
+   "lat": 35.146,
+   "lon": -90.0518
+  },
+  {
+   "state": "TN",
+   "city": "NASHVILLE",
+   "path": "tn/nashville",
+   "lat": 36.1623,
+   "lon": -86.7743
+  },
+  {
+   "state": "TX",
+   "city": "AMARILLO",
+   "path": "tx/amarillo",
+   "lat": 35.2073,
+   "lon": -101.8371
+  },
+  {
+   "state": "TX",
+   "city": "AUSTIN",
+   "path": "tx/austin",
+   "lat": 30.2649,
+   "lon": -97.7474
+  },
+  {
+   "state": "TX",
+   "city": "CORPUS CHRISTI",
+   "path": "tx/corpus christi",
+   "lat": 27.7635,
+   "lon": -97.4033
+  },
+  {
+   "state": "TX",
+   "city": "DALLAS",
+   "path": "tx/dallas",
+   "lat": 32.7763,
+   "lon": -96.7969
+  },
+  {
+   "state": "TX",
+   "city": "SAN ANTONIO",
+   "path": "tx/san antonio",
+   "lat": 29.4246,
+   "lon": -98.4951
+  },
+  {
+   "state": "UT",
+   "city": "SALT LAKE CITY",
+   "path": "ut/salt lake city",
+   "lat": 40.7596,
+   "lon": -111.8868
+  },
+  {
+   "state": "UT",
+   "city": "ST. GEORGE",
+   "path": "ut/st. george",
+   "lat": 37.1099,
+   "lon": -113.5832
+  },
+  {
+   "state": "VA",
+   "city": "HARRISONBURG",
+   "path": "va/harrisonburg",
+   "lat": 38.4493,
+   "lon": -78.8689
+  },
+  {
+   "state": "VA",
+   "city": "RICHMOND",
+   "path": "va/richmond",
+   "lat": 37.5385,
+   "lon": -77.4343
+  },
+  {
+   "state": "VA",
+   "city": "VIRGINIA BEACH",
+   "path": "va/virginia beach",
+   "lat": 36.8497,
+   "lon": -75.9761
+  },
+  {
+   "state": "VT",
+   "city": "BURLINGTON",
+   "path": "vt/burlington",
+   "lat": 44.4762,
+   "lon": -73.2129
+  },
+  {
+   "state": "WA",
+   "city": "ELLENSBURG",
+   "path": "wa/ellensburg",
+   "lat": 46.9971,
+   "lon": -120.5451
+  },
+  {
+   "state": "WA",
+   "city": "OLYMPIA",
+   "path": "wa/olympia",
+   "lat": 47.0451,
+   "lon": -122.895
+  },
+  {
+   "state": "WA",
+   "city": "RICHLAND",
+   "path": "WA/RICHLAND",
+   "lat": 46.2804,
+   "lon": -119.2752
+  },
+  {
+   "state": "WA",
+   "city": "SEATTLE",
+   "path": "wa/seattle",
+   "lat": 47.6038,
+   "lon": -122.3301
+  },
+  {
+   "state": "WA",
+   "city": "SPOKANE",
+   "path": "wa/spokane",
+   "lat": 47.6572,
+   "lon": -117.4235
+  },
+  {
+   "state": "WI",
+   "city": "LA CROSSE",
+   "path": "wi/la crosse",
+   "lat": 43.8123,
+   "lon": -91.2514
+  },
+  {
+   "state": "WI",
+   "city": "MADISON",
+   "path": "wi/madison",
+   "lat": 43.0747,
+   "lon": -89.3842
+  },
+  {
+   "state": "WI",
+   "city": "MILWAUKEE",
+   "path": "WI/MILWAUKEE",
+   "lat": 43.0386,
+   "lon": -87.9091
+  },
+  {
+   "state": "WI",
+   "city": "SHAWANO",
+   "path": "WI/SHAWANO",
+   "lat": 44.7817,
+   "lon": -88.7119
+  },
+  {
+   "state": "WV",
+   "city": "CHARLESTON",
+   "path": "wv/charleston",
+   "lat": 38.3506,
+   "lon": -81.6333
+  },
+  {
+   "state": "WY",
+   "city": "CASPER",
+   "path": "WY/CASPER",
+   "lat": 42.8501,
+   "lon": -106.3251
+  }
+ ]
+}

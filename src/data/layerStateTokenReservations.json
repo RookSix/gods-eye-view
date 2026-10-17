@@ -35,5 +35,8 @@
   ["natural-events", "7"],
   ["aircraft-emergencies", "8"],
   ["gps-jamming", "9"],
-  ["day-night", "00"]
+  ["day-night", "00"],
+  ["nav-warnings", "01"],
+  ["climate-anomalies", "02"],
+  ["radiation", "03"]
 ]

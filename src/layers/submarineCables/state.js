@@ -5,8 +5,38 @@ import {
 } from './overlay.js';
 import { BASE_CABLE_COLOR, BASE_LANDING_COLOR } from './policy.js';
 
-export function createState({ sweepClock, overlayHost }) {
+export function createState({ sweepClock, overlayHost, cableHealth = null }) {
   const state = {};
+
+  /**
+   * Opt-in cable health: only a channel handed in by the application can ever
+   * flag a cable, and that channel is empty unless the navigational-warnings
+   * layer is on. Without it every field below stays at its inert default.
+   */
+
+  state._overlayHost = overlayHost;
+
+  state._healthChannel = cableHealth;
+
+  state._healthUnsubscribe = null;
+
+  state._healthWarnings = [];
+
+  /** Normalized cable features of the current load, for matching. */
+
+  state._healthFeatures = [];
+
+  state._healthFeatureById = new Map();
+
+  state._cableEntityByFeatureId = new Map();
+
+  /** feature id -> newest-first warning matches; empty while health is off. */
+
+  state._healthMatches = new Map();
+
+  state._healthSignature = '';
+
+  state._healthCardId = null;
 
   state._viewer = null;
 

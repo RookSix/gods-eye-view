@@ -22,6 +22,9 @@ import { createFirmsSource } from '../layers/firms/source.js';
 import { createNaturalEventsSource } from '../layers/naturalEvents/source.js';
 import { createAircraftEmergenciesSource } from '../layers/aircraftEmergencies/source.js';
 import { createGpsJammingSource } from '../layers/gpsJamming/source.js';
+import { createNavWarningsSource } from '../layers/navWarnings/source.js';
+import { createClimateAnomaliesSource } from '../layers/climateAnomalies/source.js';
+import { createRadiationSource } from '../layers/radiation/source.js';
 import { createMapillarySource } from '../layers/streetLevel/providers/mapillary/source.js';
 import { createReferenceSources } from '../sources/reference.js';
 export { createReferenceSources as createStandaloneReferenceSources } from '../sources/reference.js';
@@ -59,6 +62,9 @@ export function createStandaloneLayerSources(overrides = {}) {
     'natural-events': createNaturalEventsSource(),
     'aircraft-emergencies': createAircraftEmergenciesSource(),
     'gps-jamming': createGpsJammingSource(),
+    'nav-warnings': createNavWarningsSource(),
+    'climate-anomalies': createClimateAnomaliesSource(),
+    radiation: createRadiationSource(),
     mapillary: createMapillarySource({
       token: import.meta.env?.MAPILLARY_CLIENT_TOKEN || '',
     }),

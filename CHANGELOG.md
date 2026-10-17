@@ -1,5 +1,16 @@
 # Changelog
 
+- Add three more default-off World-Monitor-style layers: Navigational warnings
+  from NGA MSI with positions parsed from the warning text (Infrastructure,
+  beside Submarine Cables), Climate anomalies from Open-Meteo ERA5 for 20
+  representative regions (Weather) and Radiation from Safecast and EPA RadNet
+  (Events). Routes `/api/nav-warnings` (30 min), `/api/climate-anomalies`
+  (6 h) and `/api/radiation` (30 min) are keyless, cached, bounded and serve
+  stale data on upstream failure. The Submarine Cables layer gains an opt-in
+  cable health highlight: with Navigational warnings also on, cables within
+  about 50 km of a cable-ship warning are flagged as possible repair activity
+  (unchanged otherwise).
+
 - Add four default-off World-Monitor-style layers (menu groups in brackets):
   Natural events from GDACS and NASA EONET (Events), Aircraft emergencies for
   squawk 7500/7600/7700 and GPS jamming from gpsjam.org's daily H3 cells

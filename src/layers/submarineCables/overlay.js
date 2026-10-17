@@ -12,6 +12,7 @@ import {
   STEM_TARGET_PX,
   CABLE_STEM_TIP_EPSILON_SQ,
 } from './policy.js';
+import { CABLE_HEALTH_COLOR } from './health.js';
 
 /**
  * Select the nearest visible cable references without exceeding the bounded
@@ -74,12 +75,20 @@ export function cableReferencePriority(distanceM) {
 
 export function createCableOverlayEntry(record) {
   const kind = record?.kind === 'landing-point' ? 'landing-point' : 'cable';
+  // Opt-in cable health flag: a cable near a cable-ship warning reads as such.
+  const flagged = kind === 'cable' && record?.healthFlag === true;
   return {
     id: String(record?.id || ''),
     position: record?.tip,
     variant: 'label',
-    title: String(record?.label || ''),
-    accent: kind === 'cable' ? BASE_CABLE_COLOR : BASE_LANDING_COLOR,
+    title: flagged
+      ? `⚠ ${String(record?.label || '')}`
+      : String(record?.label || ''),
+    accent: flagged
+      ? CABLE_HEALTH_COLOR
+      : kind === 'cable'
+        ? BASE_CABLE_COLOR
+        : BASE_LANDING_COLOR,
     priority: cableReferencePriority(record?.distanceM),
     collisionGroup: 'ambient-label',
     paintLane: 'ambient-label',

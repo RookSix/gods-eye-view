@@ -31,6 +31,10 @@ import { createApplicationNaturalEvents } from './layers/naturalEvents.js';
 import { createApplicationAircraftEmergencies } from './layers/aircraftEmergencies.js';
 import { createApplicationGpsJamming } from './layers/gpsJamming.js';
 import { createApplicationDayNight } from './layers/dayNight.js';
+import { createApplicationNavWarnings } from './layers/navWarnings.js';
+import { createApplicationClimateAnomalies } from './layers/climateAnomalies.js';
+import { createApplicationRadiation } from './layers/radiation.js';
+import { createCableHealthChannel } from './layers/cableHealth.js';
 import { createInfrastructureLayers } from '../data/infrastructure.js';
 import { localGeoJsonServices } from './localGeojsonServices.js';
 import { createBhoteKoshiEventLayer } from '../data/bhoteKoshiEvent.js';
@@ -111,6 +115,9 @@ export function createApplicationCatalog({
     const satellites = createApplicationSatellites({
       source: sources.satellites,
     });
+    // Opt-in seam: cables near cable-ship warnings highlight only while the
+    // navigational-warnings layer is on and publishing into this channel.
+    const cableHealth = createCableHealthChannel();
     const catalog = createLayerCatalog(
       [
         createBhoteKoshiEventLayer(),
@@ -176,8 +183,16 @@ export function createApplicationCatalog({
         }),
         createApplicationGpsJamming({ feed: sources['gps-jamming'] }),
         createApplicationDayNight(),
+        createApplicationNavWarnings({
+          feed: sources['nav-warnings'],
+          cableHealth,
+        }),
+        createApplicationClimateAnomalies({
+          feed: sources['climate-anomalies'],
+        }),
+        createApplicationRadiation({ feed: sources.radiation }),
         ...createInfrastructureLayers(localGeoJsonServices),
-        createApplicationCables({ source: sources.cables }),
+        createApplicationCables({ source: sources.cables, cableHealth }),
         createApplicationFirms({
           surface,
           id: 'local-firms',

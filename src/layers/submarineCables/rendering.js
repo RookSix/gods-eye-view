@@ -10,6 +10,7 @@ import {
   selectCableReferenceLabelWinners,
   cableReferencePriority,
 } from './overlay.js';
+import { CABLE_HEALTH_COLOR } from './health.js';
 
 export function createRendering({ state }) {
   function resetPublishSignature() {
@@ -40,6 +41,7 @@ export function createRendering({ state }) {
     state._referenceDataSource = null;
     state._referenceRecords = [];
     state._surfaceRecords = [];
+    state._cableEntityByFeatureId = new Map();
     state._pickByEntity = new WeakMap();
     state._referenceLabelCount = 0;
     state._publishScratch.length = 0;
@@ -68,11 +70,15 @@ export function createRendering({ state }) {
 
   function styleCableEntity(entity, feature) {
     if (!entity?.polyline) return;
-    const color = feature?.properties?.color
-      ? Cesium.Color.fromCssColorString(String(feature.properties.color))
-      : state.cableColor;
-    entity.polyline.material = color.withAlpha(0.92);
-    entity.polyline.width = 2.5;
+    // Cable health: opt-in highlight for cables near cable-ship warnings.
+    const flagged = state._healthMatches.has(feature?.id);
+    const color = flagged
+      ? Cesium.Color.fromCssColorString(CABLE_HEALTH_COLOR)
+      : feature?.properties?.color
+        ? Cesium.Color.fromCssColorString(String(feature.properties.color))
+        : state.cableColor;
+    entity.polyline.material = color.withAlpha(flagged ? 0.98 : 0.92);
+    entity.polyline.width = flagged ? 4.5 : 2.5;
     entity.polyline.clampToGround = true;
     entity.polyline.classificationType = state._classificationType;
     entity.show = true;
@@ -192,6 +198,9 @@ export function createRendering({ state }) {
       stemPositionBufferIndex: 0,
       reference,
       kind,
+      featureId: info.featureId,
+      healthFlag:
+        kind === 'cable' && state._healthMatches.has(info.featureId),
       label: clampLabel(label),
       visible: false,
       distanceM: Infinity,

@@ -303,6 +303,18 @@ export const DATA_CREDITS = [
     html: 'GPS interference: <a href="https://gpsjam.org/" target="_blank" rel="noopener">gpsjam.org</a> (data from ADS-B Exchange / adsb.lol etc.). Possible interference, not a confirmed jamming source.',
   },
   {
+    key: 'nga-msi-warnings',
+    html: 'Navigational warnings: <a href="https://msi.nga.mil/" target="_blank" rel="noopener">NGA Maritime Safety Information</a> broadcast warnings (US public domain). Positions are parsed from free text and are approximate; not for navigation. Cable-repair highlights are possible activity, not confirmed faults.',
+  },
+  {
+    key: 'open-meteo-era5',
+    html: 'Climate anomalies: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (ERA5, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>). Recent week versus the preceding 30 days for representative regions.',
+  },
+  {
+    key: 'safecast',
+    html: 'Radiation: <a href="https://safecast.org/" target="_blank" rel="noopener">Safecast</a> community measurements (CC0) and <a href="https://www.epa.gov/radnet" target="_blank" rel="noopener">US EPA RadNet</a> (public domain). Uncalibrated community sensors; not an official alert.',
+  },
+  {
     key: 'weather-lightning',
     html: 'Lightning density: NOAA/NWS nowCOAST · derived from Vaisala NLDN/GLD360. <a href="https://ocean.weather.gov/lightning/lightning_pdd.php" target="_blank" rel="noopener">Public derived density product</a>, not raw detections.',
   },

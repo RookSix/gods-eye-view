@@ -16,6 +16,11 @@ export const CABLE_REFERENCE_LABEL_WINNER_CAP = 160;
 
 export const CABLE_OVERLAY_SOURCE_ID = 'telegeography-submarine-cables';
 
+/** Overlay source for the one selected-cable health card. */
+
+export const CABLE_HEALTH_CARD_SOURCE_ID =
+  'telegeography-submarine-cables-health';
+
 /** Shared ambient-label paint budget, matching the infrastructure sources. */
 
 export const CABLE_OVERLAY_COLLISION_CAPACITY = 96;

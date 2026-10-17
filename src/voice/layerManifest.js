@@ -418,6 +418,35 @@ const layers = [
     context: false,
     noQuery: 'computed map overlay; no countable records',
   },
+  {
+    id: 'nav-warnings',
+    aliases: [
+      'navigational warnings',
+      'nav warnings',
+      'navigation warnings',
+      'maritime warnings',
+      'notices to mariners',
+    ],
+    context: false,
+    noQuery: 'new maritime layer; not wired to analyst_query',
+  },
+  {
+    id: 'climate-anomalies',
+    aliases: [
+      'climate anomalies',
+      'temperature anomalies',
+      'climate',
+      'anomalies',
+    ],
+    context: false,
+    noQuery: 'regional anomaly overlay; not wired to analyst_query',
+  },
+  {
+    id: 'radiation',
+    aliases: ['radiation', 'radiation levels', 'safecast', 'radnet', 'geiger'],
+    context: false,
+    noQuery: 'new hazard layer; not wired to analyst_query',
+  },
 ];
 
 /**

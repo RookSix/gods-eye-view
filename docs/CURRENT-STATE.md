@@ -350,6 +350,26 @@ GPS jamming turns gpsjam.org's newest non-suspect daily H3 res-4 cells
 the night hemisphere and civil twilight without touching globe lighting;
 the layer manager's 60-second update moves it.
 
+Three more default-off fork layers use the same feed pattern. Navigational
+warnings (`/api/nav-warnings`, 30 minutes) reads NGA MSI active broadcast
+warnings and parses `DD-MM.mmN DDD-MM.mmE` style positions out of the free text
+(decimal minutes, whole minutes, seconds); consecutive positions become a line
+or polygon only where the words before them say "trackline joining" or "area
+bound by", warnings with no parseable position are counted and not drawn. Cable
+work (cable ships, repair, laying; seismic streamers excluded) is classified
+server-side and handed through a small channel to the Submarine Cables layer,
+which flags cables within about 50 km (point-to-segment, flat projection) with
+an orange line, a warning-prefixed label and a card on click. The channel is
+empty unless Navigational warnings is on, so cables look unchanged by default.
+Climate anomalies (`/api/climate-anomalies`, 6 hours) compares the last 7
+complete ERA5 days (end = today minus 5) with the 30 days before them for 20
+regions in one multi-location Open-Meteo request; circles are blue-to-red by
+temperature and sized by magnitude, value labels go through the overlay host.
+Radiation (`/api/radiation`, 30 minutes) merges the latest reading per Safecast
+device (cpm divided by 334) with the latest valid hourly row of each EPA RadNet
+site (132 per-site CSVs, 4 at a time); dots are coloured by dose bin and RadNet
+stations carry a white ring.
+
 Voice and HUD snapshots reuse the existing feedState classifier. Analyst follow-ups retain their original data provenance; current-view results append provenance without replacing legacy fields. HUD context and deterministic telemetry include non-nominal feed state.
 
 Analyst records come on demand from each layer's `getAnalystRecords`: flights, military, local ADS-B, vessels, satellites, launches, earthquakes, FIRMS (VIIRS and MODIS, with a `sensor` field), fire perimeters, cyclones, transit, bikeshare, ALPR cameras, mapped installations, datacenters and dams. `analyst_query` counts the whole loaded set (up to 250,000 records per layer; past that `coverage.records` reports `returned`, `total` and `truncated: true` and the result carries `complete: false`). Ranking keeps a top-k and scans in 20,000-row slices that yield to the page and stop when superseded. It refuses unknown fields, operators, units that do not convert (`altitudeM(ft)` converts), wrong-typed values, invalid centres, unknown scope kinds and sort fields with `code` and `allowed`, refuses a follow-up with no previous answer (`NO_RESULT_CONTEXT`) or naming other layers than that answer (`FOLLOW_UP_MISMATCH`), and tells `LAYER_OFF`, `NOT_READY` and `FEED_UNAVAILABLE` apart from a real zero; when only some layers can answer the result is `partial` with `unanswered` ids. The Contacts-window path applies the same filters, ranking and item shape to one immutable panel snapshot. Each aircraft layer retains at most 20,000 rows; reaching that bound sets `complete: false` and the spoken/card count becomes “At least”, never an exact claim. A superseded query never replaces follow-up memory, while sibling analyst calls from one assistant response do not cancel one another. Items carry `lat`/`lon`; the feed window (earthquakes and FIRMS: last 24 h), the precise scope and any caveat sit in `display`, which is on-screen detail rather than something the model recites. "In view" is still a radius around the view centre, not the visible footprint. Satellite distance is ground distance.

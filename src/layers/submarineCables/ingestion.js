@@ -129,17 +129,23 @@ export function createIngestion({ state, parts, source }) {
       state._pickByEntity = new WeakMap();
       state._referenceRecords = [];
       state._surfaceRecords = [];
+      state._cableEntityByFeatureId = new Map();
+      // Match before styling so a re-enable with warnings already published
+      // draws flagged cables from the first frame. Inert without a channel.
+      parts.health.setFeatures(cableFeatures);
 
       cableEntities.forEach((entity, index) => {
         const feature = cableFeatures[index];
         const reference = featureReference(feature);
         if (!reference) return;
 
+        state._cableEntityByFeatureId.set(feature.id, entity);
         parts.rendering.styleCableEntity(entity, feature);
         parts.interaction.registerPickEntity(entity, {
           kind: 'cable',
           reference,
           label: featureLabel(feature),
+          featureId: feature.id,
         });
         state._surfaceRecords.push({
           entity,

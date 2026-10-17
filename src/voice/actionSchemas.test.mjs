@@ -40,7 +40,9 @@ test('the complete Realtime tool payload pins the manifest-generated layer relea
     // Fork re-pin (2026-10-12): four PNW local layers join the generated enums.
     // Fork re-pin (2026-10-16): natural-events, aircraft-emergencies,
     // gps-jamming and day-night join them.
-    'f8aa70cc75ab39acd42d7b3a07baaaee74a714c3fb2e6f75753bf83c5f9ef573',
+    // Fork re-pin (2026-10-16, job B): nav-warnings, climate-anomalies and
+    // radiation join them.
+    '66e146d40d0aa1d6d7810f6e2e1d68e0651a72d7c528835da6c38edc9a8fad7e',
   );
 });
 

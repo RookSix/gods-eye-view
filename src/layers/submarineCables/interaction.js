@@ -1,7 +1,11 @@
 import * as Cesium from 'cesium';
 import { isPointerFree } from '../../data/inputOwnership.js';
 
-export function createInteraction({ state, screenSpaceEventHandlerFactory }) {
+export function createInteraction({
+  state,
+  parts,
+  screenSpaceEventHandlerFactory,
+}) {
   function registerPickEntity(entity, info) {
     entity.__gevTeleGeography = info;
     state._pickByEntity.set(entity, info);
@@ -16,6 +20,8 @@ export function createInteraction({ state, screenSpaceEventHandlerFactory }) {
       if (!state._enabled) return;
       const picked = viewer.scene.pick(click.position);
       const record = resolvePickRecord(picked);
+      // Opt-in cable health card for a flagged cable; any other click drops it.
+      parts?.health?.select(record?.kind === 'cable' ? record.featureId : null);
       if (!record?.reference) return;
       flyToReference(viewer, record.reference);
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);

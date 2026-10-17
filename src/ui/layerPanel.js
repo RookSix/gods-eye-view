@@ -46,6 +46,8 @@ const PANEL_GROUPS = [
       'military-installations',
       'local-datacenters',
       'telegeography-submarine-cables',
+      // Cable-ship warnings sit beside the cables they can flag.
+      'nav-warnings',
       'local-dams',
     ],
   },
@@ -55,6 +57,7 @@ const PANEL_GROUPS = [
       'rocket-launches',
       'earthquakes',
       'natural-events',
+      'radiation',
       'local-firms',
       'fire-perimeters',
     ],
@@ -67,6 +70,7 @@ const PANEL_GROUPS = [
       'weather-satellite',
       'weather-lightning',
       'weather-cyclones',
+      'climate-anomalies',
     ],
   },
   {
