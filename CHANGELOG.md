@@ -1,5 +1,16 @@
 # Changelog
 
+- Add three more default-off World-Monitor-style layers: Airport delays from
+  the FAA NAS status feed (Aviation alerts), Severe weather alerts from NWS,
+  Environment Canada and WMO members as outlined areas (Weather) and Cyber
+  threats from abuse.ch Feodo Tracker and C2IntelFeeds, with optional URLhaus,
+  OTX and AbuseIPDB feeds when their keys are set (new Cyber group). Routes
+  `/api/airport-delays` (5 min), `/api/weather-alerts` (5 min) and
+  `/api/cyber-threats` (1 h) are cached, bounded and serve stale data on
+  upstream failure; cyber indicator positions are geolocated server-side only
+  and cached for seven days. Adds `URLHAUS_AUTH_KEY`, `OTX_API_KEY` and
+  `ABUSEIPDB_API_KEY` as optional server keys.
+
 - Add three more default-off World-Monitor-style layers: Navigational warnings
   from NGA MSI with positions parsed from the warning text (Infrastructure,
   beside Submarine Cables), Climate anomalies from Open-Meteo ERA5 for 20

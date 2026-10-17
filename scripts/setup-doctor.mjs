@@ -34,6 +34,9 @@ export const CREDENTIALS = Object.freeze([
     )),
   },
   { name: 'LL2_API_TOKEN', label: 'Launch Library 2', keychain: [] },
+  { name: 'URLHAUS_AUTH_KEY', label: 'URLhaus (cyber threats)', keychain: [['urlhaus-api', 'auth-key']] },
+  { name: 'OTX_API_KEY', label: 'AlienVault OTX (cyber threats)', keychain: [['otx-api', 'api-key']] },
+  { name: 'ABUSEIPDB_API_KEY', label: 'AbuseIPDB (cyber threats)', keychain: [['abuseipdb-api', 'api-key']] },
   { name: 'MAPILLARY_CLIENT_TOKEN', label: 'Mapillary street level', keychain: [['mapillary', 'client-token'], ['mapillary', 'token']] },
 ]);
 

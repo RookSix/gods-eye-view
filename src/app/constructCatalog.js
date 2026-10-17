@@ -35,6 +35,9 @@ import { createApplicationNavWarnings } from './layers/navWarnings.js';
 import { createApplicationClimateAnomalies } from './layers/climateAnomalies.js';
 import { createApplicationRadiation } from './layers/radiation.js';
 import { createCableHealthChannel } from './layers/cableHealth.js';
+import { createApplicationAirportDelays } from './layers/airportDelays.js';
+import { createApplicationWeatherAlerts } from './layers/weatherAlerts.js';
+import { createApplicationCyberThreats } from './layers/cyberThreats.js';
 import { createInfrastructureLayers } from '../data/infrastructure.js';
 import { localGeoJsonServices } from './localGeojsonServices.js';
 import { createBhoteKoshiEventLayer } from '../data/bhoteKoshiEvent.js';
@@ -191,6 +194,9 @@ export function createApplicationCatalog({
           feed: sources['climate-anomalies'],
         }),
         createApplicationRadiation({ feed: sources.radiation }),
+        createApplicationAirportDelays({ feed: sources['airport-delays'] }),
+        createApplicationWeatherAlerts({ feed: sources['weather-alerts'] }),
+        createApplicationCyberThreats({ feed: sources['cyber-threats'] }),
         ...createInfrastructureLayers(localGeoJsonServices),
         createApplicationCables({ source: sources.cables, cableHealth }),
         createApplicationFirms({

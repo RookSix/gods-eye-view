@@ -38,5 +38,8 @@
   ["day-night", "00"],
   ["nav-warnings", "01"],
   ["climate-anomalies", "02"],
-  ["radiation", "03"]
+  ["radiation", "03"],
+  ["airport-delays", "04"],
+  ["weather-alerts", "05"],
+  ["cyber-threats", "06"]
 ]

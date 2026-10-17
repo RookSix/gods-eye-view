@@ -447,6 +447,43 @@ const layers = [
     context: false,
     noQuery: 'new hazard layer; not wired to analyst_query',
   },
+  {
+    id: 'airport-delays',
+    aliases: [
+      'airport delays',
+      'flight delays',
+      'faa delays',
+      'ground stops',
+      'ground delay programs',
+    ],
+    context: false,
+    noQuery: 'new aviation layer; not wired to analyst_query',
+  },
+  {
+    id: 'weather-alerts',
+    aliases: [
+      'weather alerts',
+      'severe weather',
+      'severe weather alerts',
+      'weather warnings',
+      'storm warnings',
+    ],
+    context: false,
+    noQuery: 'new weather layer; not wired to analyst_query',
+  },
+  {
+    id: 'cyber-threats',
+    aliases: [
+      'cyber threats',
+      'cyber',
+      'botnets',
+      'c2 servers',
+      'command and control',
+      'malware servers',
+    ],
+    context: false,
+    noQuery: 'new cyber layer; not wired to analyst_query',
+  },
 ];
 
 /**

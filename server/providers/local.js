@@ -41,6 +41,9 @@ import { gpsJammingProxy } from './gpsJamming.js';
 import { navWarningsProxy } from './navWarnings.js';
 import { climateAnomaliesProxy } from './climateAnomalies.js';
 import { radiationProxy } from './radiation.js';
+import { airportDelaysProxy } from './airportDelays.js';
+import { weatherAlertsProxy } from './weatherAlerts.js';
+import { cyberThreatsProxy } from './cyberThreats.js';
 
 /**
  * Construct the local provider plugins in their established order.
@@ -85,6 +88,9 @@ function localProviderPlugins({ realtime } = {}) {
     navWarningsProxy(),
     climateAnomaliesProxy(),
     radiationProxy(),
+    airportDelaysProxy(),
+    weatherAlertsProxy(),
+    cyberThreatsProxy(),
     keySetupEndpoint(),
   ];
 }

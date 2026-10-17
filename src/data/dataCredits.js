@@ -315,6 +315,18 @@ export const DATA_CREDITS = [
     html: 'Radiation: <a href="https://safecast.org/" target="_blank" rel="noopener">Safecast</a> community measurements (CC0) and <a href="https://www.epa.gov/radnet" target="_blank" rel="noopener">US EPA RadNet</a> (public domain). Uncalibrated community sensors; not an official alert.',
   },
   {
+    key: 'faa-nas-status',
+    html: 'Airport delays: <a href="https://nasstatus.faa.gov/" target="_blank" rel="noopener">FAA National Airspace System Status</a> (US government work); airport positions from <a href="https://ourairports.com/" target="_blank" rel="noopener">OurAirports</a> (public domain). US airports only; check your airline for flight status.',
+  },
+  {
+    key: 'weather-alerts',
+    html: 'Severe weather alerts: <a href="https://www.weather.gov/" target="_blank" rel="noopener">US National Weather Service</a> (public domain), <a href="https://weather.gc.ca/" target="_blank" rel="noopener">Environment and Climate Change Canada</a> (Open Government Licence - Canada) and <a href="https://severeweather.wmo.int/" target="_blank" rel="noopener">WMO Severe Weather Information Centre</a> (member-issued alerts). Indicative only; follow official warnings.',
+  },
+  {
+    key: 'cyber-threats',
+    html: 'Cyber threats: <a href="https://feodotracker.abuse.ch/" target="_blank" rel="noopener">abuse.ch Feodo Tracker</a> (CC0) and <a href="https://github.com/drb-ra/C2IntelFeeds" target="_blank" rel="noopener">C2IntelFeeds</a>; IP geolocation by <a href="https://ipinfo.io/" target="_blank" rel="noopener">ipinfo.io</a>. IP geolocation shows hosting location, not the actor.',
+  },
+  {
     key: 'weather-lightning',
     html: 'Lightning density: NOAA/NWS nowCOAST · derived from Vaisala NLDN/GLD360. <a href="https://ocean.weather.gov/lightning/lightning_pdd.php" target="_blank" rel="noopener">Public derived density product</a>, not raw detections.',
   },

@@ -202,8 +202,8 @@ function encode(state) {
 
 test('production registry is exact, canonical, and rejects incomplete contracts', async () => {
   assert.equal(validateLayerStateRegistry(), true);
-  assert.equal(REGISTERED_LAYER_IDS.length, 40);
-  assert.equal(new Set(REGISTERED_LAYER_IDS).size, 40);
+  assert.equal(REGISTERED_LAYER_IDS.length, 43);
+  assert.equal(new Set(REGISTERED_LAYER_IDS).size, 43);
   assert.ok(REGISTERED_LAYER_IDS.includes('transit'));
   assert.deepEqual(REGISTERED_LAYER_IDS, [...REGISTERED_LAYER_IDS].sort());
   assert.deepEqual(LEGACY_LAYER_STATE_TOKENS, {
@@ -242,21 +242,21 @@ test('production registry is exact, canonical, and rejects incomplete contracts'
   for (const [id, token] of Object.entries(LEGACY_LAYER_STATE_TOKENS)) {
     assert.equal(LAYER_STATE_TOKEN_RESERVATIONS[id], token);
   }
-  // Every digit and the pairs "00" to "03" are allocated; the next layer takes "04".
-  assert.equal(nextLayerStateToken(), '04');
+  // Every digit and the pairs "00" to "06" are allocated; the next layer takes "07".
+  assert.equal(nextLayerStateToken(), '07');
   assert.equal(
     nextLayerStateToken({
       ...LAYER_STATE_TOKEN_RESERVATIONS,
-      alpha: '04',
-      bravo: '05',
+      alpha: '07',
+      bravo: '08',
     }),
-    '06',
+    '09',
   );
   const digitsExhausted = { ...LAYER_STATE_TOKEN_RESERVATIONS };
-  assert.equal(nextLayerStateToken(digitsExhausted), '04');
+  assert.equal(nextLayerStateToken(digitsExhausted), '07');
   assert.equal(
-    nextLayerStateToken({ ...digitsExhausted, retired: '04', used: '05' }),
-    '06',
+    nextLayerStateToken({ ...digitsExhausted, retired: '07', used: '08' }),
+    '09',
   );
   assert.equal(
     nextLayerStateToken({
@@ -303,8 +303,8 @@ test('production registry is exact, canonical, and rejects incomplete contracts'
   assert.equal(
     validateLayerStateAllocations(LAYER_STATE_TOKEN_RESERVATIONS, {
       ...LAYER_STATE_TOKEN_RESERVATIONS,
-      future: '04',
-      next: '05',
+      future: '07',
+      next: '08',
     }),
     true,
   );
@@ -312,9 +312,9 @@ test('production registry is exact, canonical, and rejects incomplete contracts'
     () =>
       validateLayerStateAllocations(LAYER_STATE_TOKEN_RESERVATIONS, {
         ...LAYER_STATE_TOKEN_RESERVATIONS,
-        future: '05',
+        future: '08',
       }),
-    /next free token 04/,
+    /next free token 07/,
   );
   const beforeLastDigit = { ...digitsExhausted };
   delete beforeLastDigit['gps-jamming'];
@@ -330,18 +330,18 @@ test('production registry is exact, canonical, and rejects incomplete contracts'
   assert.equal(
     validateLayerStateAllocations(digitsExhausted, {
       ...digitsExhausted,
-      pairB: '05',
-      pairA: '04',
+      pairB: '08',
+      pairA: '07',
     }),
     true,
   );
   assert.throws(
     () =>
       validateLayerStateAllocations(
-        { ...LAYER_STATE_TOKEN_RESERVATIONS, merged: '04' },
-        { ...LAYER_STATE_TOKEN_RESERVATIONS, merged: '04', competing: '04' },
+        { ...LAYER_STATE_TOKEN_RESERVATIONS, merged: '07' },
+        { ...LAYER_STATE_TOKEN_RESERVATIONS, merged: '07', competing: '07' },
       ),
-    /next free token 05/,
+    /next free token 08/,
   );
   assert.throws(
     () => validateLayerStateAllocations({ future: '00' }, { future: '01' }),
@@ -497,8 +497,8 @@ test('unknown enabled-layer tokens reject the payload instead of becoming an emp
 });
 
 test('malformed enabled-layer lists reject the entire payload', () => {
-  // '00' to '03' are layer tokens now; '04' is the first unallocated pair.
-  for (const value of ['.c', 'c.', 'c..e', 'c.c', '04', 'c.04']) {
+  // '00' to '06' are layer tokens now; '07' is the first unallocated pair.
+  for (const value of ['.c', 'c.', 'c..e', 'c.c', '07', 'c.07']) {
     assert.equal(
       decodeLayerStateParams(new URLSearchParams(`v=2&l=${value}`)),
       null,

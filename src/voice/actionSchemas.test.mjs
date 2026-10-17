@@ -42,7 +42,9 @@ test('the complete Realtime tool payload pins the manifest-generated layer relea
     // gps-jamming and day-night join them.
     // Fork re-pin (2026-10-16, job B): nav-warnings, climate-anomalies and
     // radiation join them.
-    '66e146d40d0aa1d6d7810f6e2e1d68e0651a72d7c528835da6c38edc9a8fad7e',
+    // Fork re-pin (2026-10-16, job C): airport-delays, weather-alerts and
+    // cyber-threats join them.
+    '85281d8f46943a0c34c4bd5c5b5b199dc750364e7c692d2868882351a58b3de0',
   );
 });
 

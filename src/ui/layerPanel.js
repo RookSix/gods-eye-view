@@ -32,7 +32,7 @@ const PANEL_GROUPS = [
   },
   {
     label: 'Aviation alerts',
-    ids: ['aircraft-emergencies', 'gps-jamming'],
+    ids: ['aircraft-emergencies', 'gps-jamming', 'airport-delays'],
   },
   {
     label: 'Cameras',
@@ -50,6 +50,10 @@ const PANEL_GROUPS = [
       'nav-warnings',
       'local-dams',
     ],
+  },
+  {
+    label: 'Cyber',
+    ids: ['cyber-threats'],
   },
   {
     label: 'Events',
@@ -70,6 +74,7 @@ const PANEL_GROUPS = [
       'weather-satellite',
       'weather-lightning',
       'weather-cyclones',
+      'weather-alerts',
       'climate-anomalies',
     ],
   },

@@ -573,6 +573,11 @@ export const LAYER_STATE_REGISTRY = Object.freeze([
     disposition: 'enabled-only',
   }),
   Object.freeze({
+    id: 'airport-delays',
+    token: '04',
+    disposition: 'enabled-only',
+  }),
+  Object.freeze({
     id: 'ais-live-vessels',
     token: 'a',
     disposition: 'enabled-only',
@@ -607,6 +612,11 @@ export const LAYER_STATE_REGISTRY = Object.freeze([
   Object.freeze({ id: 'coquitlam-crime', token: '4', disposition: 'enabled-only' }),
   Object.freeze({ id: 'coquitlam-parking', token: '3', disposition: 'enabled-only' }),
   Object.freeze({ id: 'coquitlam-trails', token: '5', disposition: 'enabled-only' }),
+  Object.freeze({
+    id: 'cyber-threats',
+    token: '06',
+    disposition: 'enabled-only',
+  }),
   Object.freeze({ id: 'day-night', token: '00', disposition: 'enabled-only' }),
   Object.freeze({ id: 'directions', token: 'n', disposition: 'enabled-only' }),
   Object.freeze({ id: 'earthquakes', token: 'e', disposition: 'enabled-only' }),
@@ -702,6 +712,11 @@ export const LAYER_STATE_REGISTRY = Object.freeze([
   }),
   Object.freeze({ id: 'transit', token: 'j', disposition: 'enabled-only' }),
   Object.freeze({ id: 'translink-transit', token: '6', disposition: 'enabled-only' }),
+  Object.freeze({
+    id: 'weather-alerts',
+    token: '05',
+    disposition: 'enabled-only',
+  }),
   Object.freeze({
     id: 'weather-cyclones',
     token: 'y',

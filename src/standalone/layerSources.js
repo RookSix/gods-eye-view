@@ -25,6 +25,9 @@ import { createGpsJammingSource } from '../layers/gpsJamming/source.js';
 import { createNavWarningsSource } from '../layers/navWarnings/source.js';
 import { createClimateAnomaliesSource } from '../layers/climateAnomalies/source.js';
 import { createRadiationSource } from '../layers/radiation/source.js';
+import { createAirportDelaysSource } from '../layers/airportDelays/source.js';
+import { createWeatherAlertsSource } from '../layers/weatherAlerts/source.js';
+import { createCyberThreatsSource } from '../layers/cyberThreats/source.js';
 import { createMapillarySource } from '../layers/streetLevel/providers/mapillary/source.js';
 import { createReferenceSources } from '../sources/reference.js';
 export { createReferenceSources as createStandaloneReferenceSources } from '../sources/reference.js';
@@ -65,6 +68,9 @@ export function createStandaloneLayerSources(overrides = {}) {
     'nav-warnings': createNavWarningsSource(),
     'climate-anomalies': createClimateAnomaliesSource(),
     radiation: createRadiationSource(),
+    'airport-delays': createAirportDelaysSource(),
+    'weather-alerts': createWeatherAlertsSource(),
+    'cyber-threats': createCyberThreatsSource(),
     mapillary: createMapillarySource({
       token: import.meta.env?.MAPILLARY_CLIENT_TOKEN || '',
     }),

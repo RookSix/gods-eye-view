@@ -370,6 +370,31 @@ device (cpm divided by 334) with the latest valid hourly row of each EPA RadNet
 site (132 per-site CSVs, 4 at a time); dots are coloured by dose bin and RadNet
 stations carry a white ring.
 
+Three further default-off fork layers. Airport delays (`/api/airport-delays`,
+5 minutes) parses the FAA NAS status XML with a small dependency-free reader
+(`server/providers/common/xml.js`: no DTD or external entities, node and depth
+caps); each `Delay_type` block is classified by its name (ground delay program,
+ground stop, delay, closure, airspace flow, de-icing), entries are placed with
+the bundled OurAirports extract, unmatched codes are counted in the response,
+and a limited closure (GA only, nightly, prior permission) draws grey rather
+than as a closure. Severe weather alerts (`/api/weather-alerts`, 5 minutes)
+merges three independent sources, each keeping its last good records: NWS
+active alerts (Moderate or worse, geometry only; zone-only alerts are counted,
+never resolved), Environment Canada polygons (up to 3 pages, risk colour mapped
+to severity) and WMO SWIC members (the list carries no coordinates, so up to 30
+CAP documents per refresh are fetched and their polygon or circle areas used;
+US and Canadian members are dropped as duplicates). Outlines are simplified
+server-side to a vertex budget; at most 10 Severe or Extreme alerts get a map
+label. Cyber threats (`/api/cyber-threats`, 1 hour) merges Feodo Tracker and
+C2IntelFeeds, plus URLhaus, OTX and AbuseIPDB only when `URLHAUS_AUTH_KEY`,
+`OTX_API_KEY` or `ABUSEIPDB_API_KEY` is set (otherwise `skipped: 'no key'`, no
+request). Positions come from server-side ipinfo.io lookups (at most 150 new
+and 20 seconds per refresh, one at a time, cached 7 days in memory and
+`.gev-cache/cyber-geo.json`), else the Natural Earth country centroid, else the
+indicator is dropped and counted; points are spread deterministically so
+co-located indicators stay separate. Cards state that IP geolocation shows
+hosting location, not the actor.
+
 Voice and HUD snapshots reuse the existing feedState classifier. Analyst follow-ups retain their original data provenance; current-view results append provenance without replacing legacy fields. HUD context and deterministic telemetry include non-nominal feed state.
 
 Analyst records come on demand from each layer's `getAnalystRecords`: flights, military, local ADS-B, vessels, satellites, launches, earthquakes, FIRMS (VIIRS and MODIS, with a `sensor` field), fire perimeters, cyclones, transit, bikeshare, ALPR cameras, mapped installations, datacenters and dams. `analyst_query` counts the whole loaded set (up to 250,000 records per layer; past that `coverage.records` reports `returned`, `total` and `truncated: true` and the result carries `complete: false`). Ranking keeps a top-k and scans in 20,000-row slices that yield to the page and stop when superseded. It refuses unknown fields, operators, units that do not convert (`altitudeM(ft)` converts), wrong-typed values, invalid centres, unknown scope kinds and sort fields with `code` and `allowed`, refuses a follow-up with no previous answer (`NO_RESULT_CONTEXT`) or naming other layers than that answer (`FOLLOW_UP_MISMATCH`), and tells `LAYER_OFF`, `NOT_READY` and `FEED_UNAVAILABLE` apart from a real zero; when only some layers can answer the result is `partial` with `unanswered` ids. The Contacts-window path applies the same filters, ranking and item shape to one immutable panel snapshot. Each aircraft layer retains at most 20,000 rows; reaching that bound sets `complete: false` and the spoken/card count becomes “At least”, never an exact claim. A superseded query never replaces follow-up memory, while sibling analyst calls from one assistant response do not cancel one another. Items carry `lat`/`lon`; the feed window (earthquakes and FIRMS: last 24 h), the precise scope and any caveat sit in `display`, which is on-screen detail rather than something the model recites. "In view" is still a radius around the view centre, not the visible footprint. Satellite distance is ground distance.

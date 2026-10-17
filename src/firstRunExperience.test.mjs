@@ -681,10 +681,12 @@ test('the voice TOOL SCHEMA matches the pinned contract — the mission mapping 
   // and day-night join the manifest-generated layer enums and alias hints.
   // Fork re-pin (2026-10-16, job B): nav-warnings, climate-anomalies and
   // radiation join them.
-  assert.equal(block.length, 30637, 'serialized tool schema length drifted');
+  // Fork re-pin (2026-10-16, job C): airport-delays, weather-alerts and
+  // cyber-threats join them.
+  assert.equal(block.length, 30863, 'serialized tool schema length drifted');
   assert.equal(
     crypto.createHash('sha256').update(block).digest('hex'),
-    'f86300047d34cc8378d971fb72a1d2013074e3569bfd1ef1aa212d290f0e987e',
+    'ddcbdacfe3fa6c6aeb2cf3bf7c7c203a6370f9a7406e9874dc1808dc7188e69a',
     'the first-run missions must ride EXISTING tools: no schema edit, no cache bust',
   );
   const instructions = fs.readFileSync(new URL('../server/providers/openai/instructions.js', import.meta.url), 'utf8');
